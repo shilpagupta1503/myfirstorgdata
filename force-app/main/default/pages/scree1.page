@@ -1,0 +1,10 @@
+<apex:page controller="wizard" >
+  <apex:form >
+    <apex:pageBlock title="Details">
+      <apex:pageBlockSection >
+        <apex:inputField value="{!a.Name}"/>
+     </apex:pageBlockSection>
+     <apex:commandButton value="save" action="{!save}"/>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

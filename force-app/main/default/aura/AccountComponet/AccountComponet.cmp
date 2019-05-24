@@ -1,0 +1,206 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global"  controller="testController" >
+    <aura:attribute name="contactList" type="Contact[]"/>
+     <aura:attribute name="toastwindow" type="Boolean" default="false"/> 
+    <aura:attribute name="checkValue" type="Boolean" default="true"/> 
+     
+    <aura:attribute name="listOfArray" type="Contact[]"/> 
+    <aura:attribute name="editableData" type="Contact"/>
+    <aura:attribute name="index" type="string" />
+    <aura:attribute name="openwindow" type="Boolean" default="false"/>
+    <aura:attribute name="openwindow1" type="Boolean" default="false"/>
+    <aura:attribute name="acId" type="Contact"/>
+    <aura:attribute name="acId1" type="Contact"/>
+     <aura:attribute name="sendData" type="object"/>
+    <lightning:card title="Contacts" iconName="standard:contact">
+        
+     <lightning:button label="Download Document" onclick="{!c.downloadDocument}" />   
+        <aura:set attribute="actions">
+            <lightning:button variant="neutral" label="New"   name="New" type="submit" onclick="{!c.openModal}" aura:id="openModal" class="hideButton"/> 
+            
+            <lightning:button variant="brand" label="Delete" title="Base action"  name="Delete" type="submit" onclick="{!c.DeleteselectedContact}" class="hideButton" aura:id="abc"/>
+       
+            <!--<c:CompForVisual accId="{!v.acId1}" ContactList="{!v.contactList}"/>-->
+        </aura:set>
+        <lightning:recordEditForm  objectApiName="Contact"  > 
+            <lightning:inputField fieldName="AccountId" aura:id="ids" onchange="{!c.alertPopup}"   />
+        </lightning:recordEditForm>
+        
+        
+        <aura:if isTrue="{!v.checkValue}"> 
+            
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                <thead>
+                    <tr class="slds-text-title--caps changelabelvalue" aura:id="aa">
+                        <th scope="col">
+                            <div  ></div>
+                        </th>
+                        <th scope="col">
+                            <div  >S.No</div>
+                        </th>
+                        <th scope="col">
+                            
+                            <div  >First Name</div>
+                            
+                        </th>
+                        
+                        <th scope="col">
+                            <div  >Last Name</div>
+                        </th>
+                        <th scope="col">
+                            <div  >Email</div>
+                        </th>
+                        <th scope="col">
+                            <div  >Phone</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.contactList}" var="ct" indexVar="index1">
+                        
+                        <tr>
+                            <td   >
+                                
+                                <ui:inputCheckbox aura:id="checkbox1"   text="{!ct.Id}" value=""  />
+                                
+                                
+                            </td>
+                            <td scope="row" data-label="S.No">{!index1+1}</td> 
+                            
+                            <td  data-label="First Name" >
+                                
+                                <lightning:formattedText linkify="true" value="{! ct.FirstName }" />
+                                
+                            </td>
+                            
+                            <td data-label="Last Name">
+                                <lightning:formattedText linkify="true" value="{! ct.LastName }" />
+                            </td>
+                            <td data-label="Email">
+                                <lightning:formattedText linkify="true" value="{! ct.Email }" />
+                                
+                            </td>
+                            <td data-label="Phone">
+                                <lightning:formattedText linkify="true" value="{! ct.Phone }" />
+                                
+                            </td>
+                            <td>
+                                <lightning:button variant="brand" label="Edit"   name="{!ct.Id}" value="{!ct.Id}" type="submit" onclick="{!c.editContacts}" aura:id="change" /> 
+                                
+                            </td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+            
+            <!--<aura:iteration items="{!v.contactList}" var="contact">
+            <lightning:recordViewForm recordId="{!contact.Id}" objectApiName="Contact">
+                <div class="slds-box">
+              
+                  <lightning:outputField fieldName="FirstName"  />
+                    <lightning:outputField fieldName="LastName" />
+                    <lightning:outputField fieldName="Email" />
+                    <lightning:outputField fieldName="Phone" />
+                    <lightning:outputField fieldName="Status__c" />
+                </div>
+            </lightning:recordViewForm>
+             
+        </aura:iteration>-->
+            
+            
+            <aura:set attribute="else">
+                <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                    <thead>
+                        <tr class="slds-text-title--caps">
+                            <th scope="col">
+                                <div >First Name</div>
+                            </th>
+                            <th scope="col">
+                                <div >Last Name</div>
+                            </th>
+                            <th scope="col">
+                                <div >Email</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.contactList}" var="ct">
+                            <tr>
+                                <td scope="row" data-label="First Name">
+                                    
+                                    <lightning:input  value="{! ct.FirstName }" />
+                                </td>
+                                <td data-label="Last Name">
+                                    <lightning:input  value="{! ct.LastName }" />
+                                </td>
+                                <td data-label="Email">
+                                    <lightning:input  value="{! ct.Email }" />
+                                    
+                                </td>
+                            </tr>
+                        </aura:iteration>
+                    </tbody>
+                </table>
+                
+                
+                <!--  <aura:iteration items="{!v.contactList}" var="contact">
+          
+            <lightning:recordEditForm recordId="{!contact.Id}" objectApiName="Contact" aura:id="form" >
+                <div class="slds-box">
+                     <lightning:button variant="brand" label="Save" title="Base action"  name="Edit1" type="submit" onclick="{!c.handleonSubmit}"/>
+                    <lightning:inputField fieldName="FirstName"  />
+                    <lightning:inputField fieldName="LastName" />
+                    <lightning:inputField fieldName="Email" />
+                    <lightning:inputField fieldName="Phone" />
+                   
+  
+                </div>
+            </lightning:recordEditForm>
+        </aura:iteration> -->
+                
+            </aura:set>
+            
+        </aura:if>
+        
+        <aura:if isTrue="{!v.openwindow}">
+            
+            <div >
+                <c:modalWindowPopup modalwindowattribute="{!v.openwindow}" accountidfield="{!v.acId}"  listContact="{!v.contactList}" toast="{!v.toastwindow}"/>
+            </div>
+            
+            
+        </aura:if>   
+        
+        
+        
+        <aura:if isTrue="{!v.openwindow1}">
+            
+            <div >
+                <c:eDitableComponet modalwindowattribute="{!v.openwindow1}" editData="{!v.editableData}" accountidfield1= "{!v.acId }" EditlistContact="{!v.contactList}"/>
+            </div>
+            
+            
+        </aura:if>   
+  <!---Toast popup-->
+    <aura:if isTrue="{!v.toastwindow}">
+    <div class="demo-only" style="height: 4rem;">
+        <div class="slds-notify_container slds-is-relative">
+            <div class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                <span class="slds-assistive-text">success</span>
+                <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                    
+                </span>
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">Account <a href="javascript:void(0);">ACME - 100</a> widgets was created.</h2>
+                </div>
+                <div class="slds-notify__close">
+                    <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                        
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+ </aura:if>      
+    </lightning:card>
+</aura:component>

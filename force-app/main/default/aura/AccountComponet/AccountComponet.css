@@ -1,0 +1,33 @@
+.THIS {
+}
+
+.THIS .hideButton {
+    
+    display:none;
+   
+}
+
+
+.THIS .slds-form-element__label {
+    
+    display:none;
+   
+}
+
+.THIS .changelabelvalue {
+    
+    display:none;
+   
+}
+
+
+.THIS .hideCheckBox {
+    
+    display:none;
+    
+}
+.THIS .pencil {
+    
+   left:30px;
+    
+}

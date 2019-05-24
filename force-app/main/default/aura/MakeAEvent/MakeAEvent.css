@@ -1,0 +1,43 @@
+.THIS {
+}
+
+.THIS .makeEventlabel {
+    text-align: left;
+    padding: 5px 0px;
+    width: 200px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #697071 !important;
+    font-size: 14px;
+    font-family: Montserrat;
+}
+.THIS .makeeventselect {
+    margin-bottom:10px;
+}
+.THIS .makegrantagreelabel{
+   color: rgb(37, 116, 169) !important;
+    font-size: 15px !important;
+}
+.THIS.makeeventform{
+    /* width: 96%; */
+    /* border-radius: 0; */
+    /* box-shadow: 0 0 4px rgba(40,44,63,0.08); */
+    /* border: 1px solid #eaeaec; */
+   /* padding: 0px 0px 0px;*/
+    margin: 0 auto;
+}
+
+
+.THIS.makegrantform{
+    /* width: 96%; */
+    /* border-radius: 0; */
+    /* box-shadow: 0 0 4px rgba(40,44,63,0.08); */
+    /* border: 1px solid #eaeaec; */
+    padding: 0px 45px 30px;
+    margin: 0 auto;
+}
+.THIS .hidelabel label{
+    display:none;
+    
+    
+}

@@ -1,0 +1,19 @@
+<template>
+        <body style="background-color:powderblue;">
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+            Click the example buttons to activate the <code>onclick</code> handler and view the label of the clicked button.
+        </h2>
+       <div>
+        <!-- Brand variant: Identifies the primary action in a group of buttons -->
+        <lightning-button variant="brand" label="Brand Button" title="Brand action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+
+        <lightning-button variant="brand" label="Brand Class" title="Brand action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+       </div>
+    </div>
+
+    <div class="slds-m-vertical_medium">
+        <p>The label of the button that was clicked is: <span class="slds-text-heading_small">{clickedButtonLabel}</span></p>
+    </div>
+    </body>
+</template>

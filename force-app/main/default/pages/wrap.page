@@ -1,0 +1,25 @@
+<apex:page controller="Wrap1" >
+  <apex:form >
+     <apex:pageblock >
+       <apex:pageBlockButtons >
+          <apex:commandButton value="Show Selected Accounts" action="{!process_Value}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="All Accounts">
+           <apex:pageBlockTable value="{!Wrapperlist}" var="v">
+           <apex:column headerValue="select" >
+              <apex:inputCheckbox value="{!v.check}"/>
+           </apex:column>
+           <apex:column value="{!v.accs.Name}"/>
+           <apex:column value="{!v.accs.BillingState}"/>
+           <apex:column value="{!v.accs.Phone}"/>
+           </apex:pageBlockTable>
+           
+             <apex:pageBlockTable value="{!Wrapperlist2}" var="v1">
+                <apex:column value="{!v1.accs.Name}"/>
+           <apex:column value="{!v1.accs.BillingState}"/>
+           <apex:column value="{!v1.accs.Phone}"/>
+             </apex:pageBlockTable>
+        </apex:pageBlockSection>
+     </apex:pageblock>
+  </apex:form>  
+</apex:page>

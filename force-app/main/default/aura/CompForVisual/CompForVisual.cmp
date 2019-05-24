@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="testController" >
+	 <aura:attribute name="accId" type="Contact"/>
+     <aura:attribute name="ContactList" type="Contact[]"/>
+    <lightning:button variant="brand" label="Search" title="Base action"  name="Search" type="submit" onclick="{!c.alertPopup}" />
+</aura:component>

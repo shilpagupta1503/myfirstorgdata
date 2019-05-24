@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showHeader="false" controller="Demo21" >
+<apex:form >
+<apex:pageMessages id="msgerror"/>
+<apex:pageBlock title="LOGIN PAGE">
+<apex:pageBlockSection >
+<apex:inputText label="USERNAME" value="{!Name}" /><br>
+</br>
+<apex:inputSecret label="PASSWORD" value="{!AccountNumber}" />
+</apex:pageBlockSection>
+<apex:pageBlockButtons location="bottom" >
+<apex:commandButton value="save" action="{! save}"/>
+
+</apex:pageBlockButtons>
+</apex:pageBlock>
+<apex:pageMessages ></apex:pageMessages>
+</apex:form>
+</apex:page>

@@ -1,0 +1,32 @@
+<apex:page controller="design" >
+  <apex:form >
+    <apex:pageBlock >
+      <apex:pageBlockSection >
+        <apex:pageBlockTable value="{!accounts}" var="a">
+        <apex:column >
+          <apex:facet name="header">AccountName</apex:facet>
+          <apex:outputText value="{!a.Name}"/>
+           </apex:column>
+             <apex:column >
+               <apex:facet name="header">AccountIndustry</apex:facet>
+          <apex:outputText value="{!a.Industry}"/>
+            </apex:column>
+        </apex:pageBlockTable>
+      </apex:pageBlockSection>
+      <apex:commandButton value="New" action="{!NewContact}" reRender="pio" />
+      </apex:pageBlock>
+    <apex:pageBlock id="pio" >
+     <apex:pageBlockSection rendered="{!action}" >
+      <apex:inputField value="{!c.FirstName}" />
+      <apex:inputField value="{!c.LastName}" />
+      <apex:inputField value="{!c.Email}"/>
+      <apex:inputField value="{!c.Phone}"/><br></br>
+      <apex:commandButton value="Save" action="{!Save}">
+      <apex:commandButton value="Cancel" action="{!Cancel}"/>
+      </apex:commandButton>
+    </apex:pageBlockSection>
+    </apex:pageBlock>
+    
+    
+  </apex:form>
+</apex:page>

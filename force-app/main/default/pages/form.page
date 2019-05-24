@@ -1,0 +1,17 @@
+<apex:page sidebar="false">
+<apex:form >
+ <apex:pageBlock title="ENTER THE FORM" >
+ First Name <apex:inputText /><br>
+ </br>
+<apex:outputLabel value="UserName"></apex:outputLabel><apex:inputText /><br>
+ </br>
+ Password<apex:inputSecret /><br>
+ </br>
+ coverletter<apex:inputFile value="file"></apex:inputFile><br>
+ </br>
+ 
+ <apex:commandButton value="save" action="{!save}"/>
+ 
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name='searchAsYouType' type='Boolean' default='false' access='global' />
+   <aura:attribute name='searchInut' type='String' default='' access='global' />
+   <aura:attribute name="activeQuerySuggestions" type="List" default="[]"/>
+<div class="search-container" onkeyup="{!c.handlekeyPress}">
+
+    <!-- LIGHTNING:INPUT  -->
+
+    <lightning:input aura:id="query-box" id="query-box" type="search" name="search" placeholder="additional search terms" onchange="{!c.query}" value="{!v.searchInut}"/>
+
+
+    <!-- DROPDOWN --> 
+
+    <div id="listbox-suggestions" aura:id="query-suggest-box" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid slds-hide" role="listbox">
+        <ul aura:id="query-suggest-list" class="slds-listbox slds-listbox_vertical" role="presentation" >
+            <aura:iteration items="{!v.activeQuerySuggestions}" var="sugg" indexVar="index">
+                <li aura:id="query-suggest-item" role="presentation" class="slds-listbox__item" >
+                    <div aura:id="query-suggestions" id="{!sugg}" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small" role="option" 
+                         value="{!sugg}" onclick="{!c.handlesuggestionClick}">
+                        {!sugg}
+                    </div>
+                </li>
+            </aura:iteration>
+        </ul>
+    </div>
+
+</div>   
+</aura:component>

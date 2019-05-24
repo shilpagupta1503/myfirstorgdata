@@ -1,0 +1,6 @@
+<apex:page >
+
+<apex:pageMessage summary="ALL DETAILS ARE SAVED" severity="error" strength="2" > </apex:pageMessage>
+
+
+</apex:page>

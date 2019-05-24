@@ -1,0 +1,7 @@
+<aura:component controller="testController"  >
+    
+      <aura:attribute name="sendData1" type="Contact[]" />
+         <aura:attribute name="sendData" type="object"/>
+<lightning:button label="Download Document" onclick="{!c.downloadDocument}" />
+  
+</aura:component>

@@ -1,0 +1,18 @@
+<apex:page controller="pagination4" >
+  <apex:form >
+    <apex:pageBlock >
+      <apex:pageBlockTable value="{!accslist}" var="r">
+        <apex:column value="{!r.Name}"/>
+        <apex:column value="{!r.Type}"/>
+      </apex:pageBlockTable>
+      <apex:pageBlockButtons location="bottom" >
+        <apex:commandButton value="<<" action="{!beginning}" disabled="{!back}"/>
+        <apex:commandButton value="<" action="{!previous}" disabled="{!back}"/>
+        <apex:commandButton value=">" action="{!next}" disabled="{!forward}"/>
+        <apex:commandButton value=">>" action="{!end}" disabled="{!forward}"/>
+        </apex:pageBlockButtons>
+        
+      
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

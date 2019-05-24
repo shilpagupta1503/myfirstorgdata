@@ -1,0 +1,14 @@
+<apex:page standardController="Candidate__c" recordSetVar="records" >
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockTable value="{! records}" var="rec">
+<apex:column value="{! rec.First_Name__c}"/>
+<apex:column value="{! rec.Email_Address__c}"/>
+<apex:column value="{! rec.Position__c}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+
+
+</apex:form>
+
+</apex:page>

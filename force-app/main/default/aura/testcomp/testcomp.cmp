@@ -1,0 +1,5 @@
+<aura:component >
+	hello
+    <lightning:button name="show" variant="brand" onclick="{!c.show}" />
+   
+</aura:component>

@@ -1,0 +1,15 @@
+<apex:page >
+<apex:form >
+<b><style>
+    .radioinput input[type="radio"]{float:left;}
+    .radioinput label{display:block;}
+    </style></b>
+
+<apex:selectRadio styleClass="radioinput"  style="width:350px;" layout="pageDirection" id="theRadio" >
+    <apex:selectOption itemValue="Accepted" itemlabel=" I acceptI acceptI acceptI acceptI acceptI acceptI acceptI acceptI acceptI acceptI accept"  />
+    <apex:selectOption itemValue="Declined" itemlabel=" I decline this invitation"/>
+     
+</apex:selectRadio>
+</apex:form>
+
+</apex:page>

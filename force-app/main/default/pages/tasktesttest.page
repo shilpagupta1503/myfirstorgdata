@@ -1,0 +1,14 @@
+<apex:page controller="task1">
+  <apex:form >
+    <apex:pageBlock >
+    <apex:pageMessages ></apex:pageMessages>
+      <apex:pageBlockSection columns="1">
+        <apex:inputField value="{!opp.Name}"/>
+        <apex:inputField value="{!opp.StageName}"/>
+        <apex:inputField value="{!opp.CloseDate}"/>
+        <apex:commandButton value="Save" action="{!Save}"/>
+        
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

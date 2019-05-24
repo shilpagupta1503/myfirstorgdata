@@ -1,0 +1,6 @@
+<apex:page standardController="Contact">
+    <flow:interview name="deleteContact123" > 
+        <apex:param name="varAccid" value="{!Contact.AccountId}"/> 
+        <apex:param name="vartargetid" value="{!Contact.Id}"/> 
+    </flow:interview> 
+</apex:page>

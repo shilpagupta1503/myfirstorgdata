@@ -1,0 +1,80 @@
+<aura:component controller="EventObjectClass" implements="lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="SubjectValue" type="String[]"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="FundFlag" type="Boolean" default="false"/>
+    <aura:attribute name="GrantStartDateFieldFlag" type="Boolean" default="false"/>
+    <aura:attribute name="GrantEndDateFieldFlag" type="Boolean" default="false"/>
+    <aura:attribute name="event" type="Event" default="{sobjectType: 'Event'}" />
+    <aura:attribute name="sevent" type="Special_Event__c" default="{sobjectType: 'Special_Event__c'}" />
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" access="global" />
+    <aura:attribute name="GrantAmountFlag" type="Boolean" default="false"/>
+    
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    
+    <div class="slds-form makeeventform">
+        <div class="{!if(v.FundFlag, 'slds-form-element slds-form-element_horizontal slds-has-error', 'slds-form-element slds-form-element_horizontal')}">
+            <label class="slds-form-element__label makeEventlabel" for="horizontal-input-id-01">Subject</label>
+            <div class="slds-form-element__control" style="width:100%;" >
+                <lightning:select aura:id="SubjectSource" name="select" label="" messageWhenValueMissing="Please select a Subject." class="" 	value="{!v.event.Subject}">
+                    <option text="Select a Subject" value="" class="selectopt" style="" ></option>
+                    <aura:iteration items="{!v.SubjectValue}" var="Sub">
+                        <option text="{!Sub}" value="{!Sub}"></option>
+                    </aura:iteration>
+                </lightning:select>
+                <div class="slds-form-element__help makegrantrequired" style="{!if(v.FundFlag, 'display:block', 'display:none')}" id="error-01">Please select a Fund.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="{!if(v.GrantAmountFlag, 'slds-form-element slds-form-element_horizontal slds-has-error', 'slds-form-element slds-form-element_horizontal')}">
+        <label class="slds-form-element__label makeEventlabel" for="Request_Amount">Description</label>
+        <div class="slds-form-element__control">   
+            <lightning:input type="text" aura:id="grantAmount" value="{!v.event.Description}" class="makegrantselect" style="height:50px"/>
+            <div class="slds-form-element__help makegrantrequired" style="{!if(v.GrantAmountFlag, 'display:block', 'display:none')}" id="error-01">Please provide Grant Amount.</div>
+        </div>
+    </div>
+    <div class="{if(v.GrantStartDateFieldFlag, 'slds-form-element slds-form-element_horizontal slds-has-error', 'slds-form-element slds-form-element_horizontal')}">
+        <label class="slds-form-element__label makeEventlabel" for="horizontal-input-id-02">Start Date</label>
+        <div class="slds-form-element__control">
+            <lightning:input aura:id="StartDate" type="date" min="" max="{!v.event.EndDateTime}" value="{!v.event.StartDateTime}" class="makegrantselect"/>
+            <div class="slds-form-element__help makegrantrequired" style="{!if(v.GrantStartDateFieldFlag, 'display:block', 'display:none')}" id="error-01">Please provide Grant Start Date.</div>
+        </div>
+    </div>
+    
+    <div class="{!if(v.GrantEndDateFieldFlag, 'slds-form-element slds-form-element_horizontal slds-has-error', 'slds-form-element slds-form-element_horizontal')}">
+        <label class="slds-form-element__label makeEventlabel" for="horizontal-input-id-02">End Date</label>
+        <div class="slds-form-element__control">
+            <lightning:input aura:id="EndDateId" type="date" min="{!v.event.StartDateTime}" max="" value="{!v.event.EndDateTime	}"
+                             onchange="{!c.Validat}" class="makegrantselect"/>   
+            <div class="slds-form-element__help makegrantrequired" style="{!if(v.GrantEndDateFieldFlag, 'display:block', 'display:none')}" id="error-01">Please provide Grant End Date.</div>
+        </div>
+    </div>
+    <div class=" slds-form-element slds-form-element_horizontal " >
+        <label class="slds-form-element__label makeEventlabel " for="horizontal-input-id-02">Assigned To</label>
+        <div class="slds-form-element__control hidelabel">
+        <lightning:recordEditForm aura:id="recordViewForm"
+                                 
+                                  objectApiName="Special_Event__c">
+            <lightning:messages />
+            
+            <lightning:inputField fieldName="User__c"  variant="label-hidden"    />
+          
+        
+        </lightning:recordEditForm>
+            </div>
+    </div>
+    <div align="right" style="float: right;width: 100%;">
+        <lightning:button variant="brand" aura:id="submit"  label="Save" class="slds-m-top_medium savegrant" onclick="{!c.SaveAndClose}"/>
+    </div>
+</aura:component>

@@ -1,0 +1,219 @@
+<apex:page controller="DesignAssign7" sidebar="false" >
+<apex:form >
+<script>
+var a;
+var c;
+var modal;
+   function closepopup(){
+     modal.style.display="none";
+      location.reload(false);
+   }
+    function funcSelectedValue(t,selectedValue,contactIds){
+    a= document.getElementById(selectedValue).value=t.value;
+    c=contactIds;
+     console.log(c);
+       console.log(a);
+    }
+    
+    
+   function changeValue(Ids,fName){
+    
+    console.log(Ids);
+    if(c==Ids){
+    
+    
+      if(a=="Approve"){
+       var txt=confirm("Are you sure,you want to submit");
+       if(txt==true){ 
+      functionaction();
+      }
+      else 
+       location.reload(false);
+      }
+      
+      else{
+      var data=document.getElementById("insert").innerHTML =fName ;
+      console.log(data);
+       modal=document.getElementById("MyModal");
+       console.log(modal);
+    
+      modal.style.display="flex";
+      
+      
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick=function(){
+      modal.style.display="none";
+       location.reload(false);
+      }
+      }
+      
+    }
+    else{
+    alert('Please select the Button before submit');
+    }
+   }
+   
+   function subOnReject(){
+   
+   if(document.getElementById("getValue").value!='')
+   {
+   var txt=confirm("Are you sure,you want to submit");
+   
+   if(txt==true){
+   var desValue=document.getElementById("getValue").value;
+   console.log(desValue);
+    
+   submitData(desValue);
+   modal.style.display="none";
+   setTimeout("location.reload(false);",2000);
+   document.getElementById("getValue").value=null;
+   }
+   
+   else return ;
+   } 
+   
+   else {
+        alert("Please enter a value");
+    }
+   
+   }
+   
+    
+</script>
+<apex:pageBlock id="radiobutton" >
+ 
+  <apex:pageMessages id="msg1"/>
+ 
+ <apex:variable var="counter" value="{!1}"/>
+
+  
+  <apex:pageBlockTable value="{!results}" var="ct"  id="hideValue">
+  <apex:column headerValue="Sl.No">
+{!counter}
+  <apex:variable var="counter" value="{!counter+1}"/>
+ 
+ </apex:column>
+
+   <apex:column value="{!ct.Title__c}"/>
+   <apex:column value="{!ct.FirstName}"/>
+   <apex:column value="{!ct.LastName}"/>
+   <apex:column headerValue="Action" >
+      <input type="radio" name="chosen" id="app"  value="Approve" onclick="funcSelectedValue(this,'{!$Component.radiobutton}','{!ct.Id}'); " / >
+     Approve
+     <input type="radio" name="chosen"  id="rej" value="Reject" onclick="funcSelectedValue(this,'{!$Component.radiobutton}','{!ct.Id}');"/>
+     Reject
+   
+
+     &nbsp;
+     &nbsp;
+     &nbsp;
+     <input type="button" value="Action" style="color:white" onclick="changeValue('{!ct.Id}','{!ct.Name}')" id="buttonId" class="buttonclr" />
+     
+     </apex:column>
+  </apex:pageBlockTable>
+ 
+  
+  PageNo# {!pageNumber}
+ 
+  <br/>
+  
+  <div class="centeroutlet">
+   
+       <apex:commandLink action="{!callFirst}" value="<<" reRender="radiobutton" onclick=""  />&nbsp;&nbsp;&nbsp;
+        <apex:commandLink action="{!callPrevious}" value="<"  rendered="{! HasPrevious }" reRender="radiobutton" />&nbsp;&nbsp;&nbsp;
+        
+       <apex:commandLink action="{!callNext}" value=">"  rendered="{! HasNext }" reRender="radiobutton" />&nbsp;&nbsp;&nbsp;
+       <apex:commandLink action="{!callLast}" value=">>" reRender="radiobutton" />
+       <div class="totalvalue" >
+       Total Records :<apex:outputText value="{!totalrecs}" />
+       </div>
+     </div>
+    
+     
+     
+ </apex:pageBlock>
+ <apex:actionFunction name="functionaction" action="{!action}"/>
+
+<div class="bg-modal" id="MyModal" >
+
+<apex:actionFunction name="submitData" action="{!SubmitforRejection}" reRender="hideValue,msg1" >
+<apex:param name="desValue" value="" />
+</apex:actionFunction>
+     <div class="modal">
+      <span class="close">&times;</span>
+     <h1 style="font-size:25px; color:blue; " >Reason for Rejection</h1>
+   
+     <p  id="insert"></p>
+     
+    <div  id="closeid">
+    
+    </div>
+    <form action="">
+      <input type="text" class="input" placeholder="Description" id="getValue" required="true"/>
+       <input type="button" value="Submit" onclick="subOnReject()"  />
+        <input type="button" value="Cancel" onclick="closepopup()"   />
+      
+   </form>
+</div>
+</div>  
+</apex:form>
+      
+
+<style type="text/css">
+
+.bg-modal{
+width:100%;
+height:100%;
+background-color:rgba(0,0,0,0.7);
+position:absolute;
+top:0;
+justify-content:center;
+align-items:center;
+display:none;
+
+
+}
+
+.modal{
+width:400px;
+height:250px;
+background-color:white;
+padding:20px;
+position:relative;
+
+
+}
+.input{
+padding:10px;
+width:350px;
+height:80px;
+margin:15px auto;
+
+}
+
+.close{
+position:absolute;
+top:0;
+right:14px;
+font-size:32px;
+cursor:pointer;
+
+
+}
+.buttonclr{
+background-color:rgb(0,150,130);
+}
+
+.centeroutlet{
+
+text-align:center;
+
+}
+
+.totalvalue{
+
+text-align:right;
+}
+
+</style>   
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page controller="dci" >
+  <apex:form >
+  <apex:pageBlock >
+      <apex:pageBlockSection title="General Information">
+      <apex:inputField value="{!contact.FirstName}"/>
+      <apex:commandButton value="save" action="{!save}"/>
+          
+      </apex:pageBlockSection>
+      
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardController="Opportunity" recordSetVar="records" >
+<apex:form >
+<apex:pageBlock >
+
+<apex:pageBlockTable value="{!records}" var="rec">
+<apex:column value="{!rec.Name}"/>
+<apex:column value="{!rec.Amount}"/>
+<apex:inlineEditSupport event="ondblclick"   />
+
+</apex:pageBlockTable>
+<apex:pageblockButtons >
+<apex:commandButton value="save" action="{!save}" />
+</apex:pageblockButtons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,11 @@
+<apex:page controller="myprojectsample4" >
+  <apex:form >
+    <apex:pageBlock mode="edit" >
+       <apex:pageBlockSection title="Contact Info" >
+          <apex:outputText value="{!con.Name}" label="Contact Name"/>
+            <apex:outputText value="{!con.Account.Industry}" label="Industry"/>
+       </apex:pageBlockSection>
+       
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

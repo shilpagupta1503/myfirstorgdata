@@ -1,0 +1,49 @@
+<apex:page controller="pro3" >
+   <apex:form >
+       <apex:pageBlock >
+           <apex:pageBlockSection title="General Information" >
+              <apex:inputField value="{!con.firstname}" label="First Name"/>
+              <apex:inputField value="{!con.lastname}" label="Last Name"/>
+              <apex:inputField value="{!con.Email}" label="Email" required="true"/>
+              <apex:inputField value="{!con.Phone}" label="Phone" required="true"/>
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Address Information" >
+              <apex:inputField value="{!con.MailingCity}" label="City"/>
+              <apex:inputField value="{!con.MailingCountry}" label="Country"/>
+              <apex:inputField value="{!con.MailingState}" label="State"/>
+              <apex:inputField value="{!con.MailingPostalCode}" label="ZipCode" required="true"/>
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Industry Information" >
+              <apex:selectList label="Business Vertical" multiselect="true">
+                  <apex:selectOption ></apex:selectOption>
+               </apex:selectList>
+               <apex:inputField value="{!con.Date_Procured__c}"/>
+               <apex:selectList label="Division Of Vertical" multiselect="true">
+                  <apex:selectOption ></apex:selectOption>
+               
+               </apex:selectList>
+               <apex:selectList label="Area Of Division" multiselect="true">
+                  <apex:selectOption ></apex:selectOption>   
+               </apex:selectList> 
+
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Amount Information" >
+              <apex:inputField value="{!con.Amount_Invested__c}" label="Amount Invested" required="true"/>
+              <apex:inputField value="{!con.Amount_Earned__c}" label="Amount Earned" required="true"/>
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Case Information" >
+              <apex:inputField value="{!con.Status__c}" label="Status" required="true"/>
+              <apex:inputField value="{!con.Industry__c}" label="Industry" />
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Resolution Information" >
+               <apex:selectList label="Action Taken" multiselect="true">
+                  <apex:selectOption ></apex:selectOption>
+               </apex:selectlist>
+              <apex:inputField value="{!con.Date_Opened__c}" label="Date Opened" required="true"/>
+              <apex:inputField value="{!con.Date_Closed__c}" label="Date Closed" />
+              <apex:inputField value="{!con.Subject__c}" label="Subject" required="true"/><br/>
+              <apex:inputField value="{!con.Description}" label="Description" />
+           </apex:pageBlockSection>
+        </apex:pageBlock>
+   </apex:form> 
+</apex:page>

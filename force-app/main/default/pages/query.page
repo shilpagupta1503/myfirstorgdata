@@ -1,0 +1,23 @@
+<apex:page controller="queryClass2">
+  <apex:form >
+    <apex:pageBlock >
+       <apex:pageBlockSection >
+          <apex:inputText label="search by industry" value="{!Keyword}"/>
+          <apex:commandButton value="go" action="{!go}" reRender="m" />
+       </apex:pageBlockSection>
+       </apex:pageBlock>
+       <apex:pageBlock id="m">
+     
+          <apex:pageBlockTable value="{!Result}" var="a">
+            <apex:column value="{!a.Name}"/>
+            <apex:column value="{!a.Industry}"/>
+            <apex:column value="{!a.Daily_Revenue__c}"/>
+            <apex:column value="{!a.Type }"/>
+           
+          </apex:pageBlockTable>
+         <apex:pageBlockSection >
+     <apex:outputText value="{!Total}" label="Total Revenue"/>
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

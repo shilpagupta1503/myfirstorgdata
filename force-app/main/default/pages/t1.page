@@ -1,0 +1,17 @@
+<apex:page action="{!URLFOR($Action.Account.List, $ObjectType.Account)}"
+ standardController="Account">
+<apex:form >
+    Hello {!$User.FirstName}!
+
+    <p>You are viewing the {!Account.Name} account.</p>
+    <apex:pageBlock >
+    <apex:pageBlockSection >
+    <apex:inputField value="{!Account.Phone}" label="Phone"/>
+    <apex:inputText value="{!Account.Phone}" label="Phone"/>
+    </apex:pageBlockSection>
+    <apex:detail relatedList="false"/>
+    </apex:pageBlock>
+    </apex:form>
+
+
+</apex:page>

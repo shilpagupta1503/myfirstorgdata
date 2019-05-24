@@ -1,0 +1,11 @@
+<apex:page controller="wizard" >
+  <apex:form >
+    <apex:pageBlock title="UpdateDetails">
+      <apex:pageBlockSection >
+      <apex:outputField value="{!a.Name}"/>
+        <apex:inputField value="{!a.Phone}"/>
+     </apex:pageBlockSection>
+     <apex:commandButton value="save" action="{!go}"/>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

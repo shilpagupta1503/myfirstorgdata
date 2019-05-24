@@ -1,0 +1,10 @@
+<apex:page >
+<apex:pageBlock >
+<apex:panelBar >
+<apex:panelBarItem label="Item1" onenter="alert('huh');" onleave="alert('hey');">empty product</apex:panelBarItem>
+<apex:panelBarItem label="Item2">discounted products</apex:panelBarItem>
+<apex:panelBarItem label="Item3">not in sale</apex:panelBarItem>
+</apex:panelBar>
+
+</apex:pageBlock>
+</apex:page>

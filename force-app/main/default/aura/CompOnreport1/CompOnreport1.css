@@ -1,0 +1,15 @@
+.THIS {
+}
+.THIS.hidename{
+    display:none;
+}
+.THIS.style{
+     padding:50px;
+}
+.THIS .slds-pill__action{
+    width:400px !important;
+}
+.THIS .slds-button__icon{
+   display:none; 
+    
+}

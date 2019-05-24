@@ -1,0 +1,126 @@
+<apex:page controller="Desig">
+ <apex:form >
+  <apex:pageBlock >
+     <apex:actionFunction name="callAction" action="{!action}"/>
+     <apex:pageBlockTable value="{!results}" var="ct"   >
+       <apex:column value="{!ct.Person_Id__c}" />
+       <apex:column value="{!ct.Title__c}"/>
+       <apex:column value="{!ct.FirstName}"/>
+       <apex:column value="{!ct.LastName}"/>
+       <apex:column headerValue="Action">
+         
+         <input type="radio" name="chosen"   value="Approve" / >
+         Approve
+         <input type="radio" name="chosen"   value="Reject" onclick="check(this.value)" />
+         Reject
+         &nbsp;
+         <input type="button" value="Action" onclick="function()" id="myBtn" />
+        </apex:column>
+      </apex:pageBlockTable>
+    <input type="hidden" id="answer" />
+     </apex:pageBlock>
+    
+     <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+    
+     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("input[type='button']").click(function(){
+            var radioValue = $("input[name='chosen']:checked").val();
+            if(radioValue=='Approve'){
+                var txt=confirm("Do You Want To Continue");
+                if(txt==true){
+                
+                callAction();
+                }
+            }
+       
+        });
+        
+    });
+    
+  
+</script>
+<script>
+function check(chosen) {
+document.getElementById("answer").value=chosen;
+if(document.getElementById("answer").value=='Reject'){
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+
+
+}
+}
+</script>
+
+
+   
+ 
+    </apex:form>
+ 
+    <style type="text/css">
+        .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+    </style>
+</apex:page>

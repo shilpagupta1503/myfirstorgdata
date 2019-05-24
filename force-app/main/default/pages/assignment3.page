@@ -1,0 +1,49 @@
+<apex:page controller="RadioButtonController">
+    <apex:form >
+        <!-- Account page block -->
+        <apex:pageBlock title="Account Viewer" >
+            <apex:pageblockSection rendered="{!If(accounts !=null && accounts.size>0,true,false)}">
+                <apex:pageBlockTable value="{!accounts}" var="acc"  width="100%" id="accTable">
+                    <apex:column headerValue="Select">
+                        <input type="radio" name="<strong>selectRadio</strong>" id= "radio">
+                        <br/>
+                        <apex:actionSupport event="onclick" action="{!getSelected}" status="buttonStatus"  reRender="cntblock">
+                            <apex:param name="accid" value="{!acc.id}"/>
+                        </apex:actionSupport>
+                    </input>
+                </apex:column>
+                <apex:column value="{!acc.Name}"/>
+                <apex:column value="{!acc.Type}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+       
+        <!-- Action status block -->
+        <apex:actionStatus id="buttonStatus">
+            <apex:facet name="start">
+                <apex:outputPanel >
+                    <apex:commandButton value="View Contact Records" disabled="true"/>
+                </apex:outputPanel>
+            </apex:facet>
+            <apex:facet name="stop">
+                <apex:outputPanel >
+                    <apex:commandButton value="View Contact Records" action="{!viewContacts}" reRender="cntblock"/>
+                </apex:outputPanel>
+            </apex:facet>
+        </apex:actionStatus>
+    </apex:pageBlock>
+   
+    <!-- Contact Block -->
+    <apex:outputPanel id="cntblock">
+        <apex:pageBlock title="Available Contacts" rendered="{!If(contacts != null && contacts.size>0,true,false)}">
+            <apex:pageblockSection >
+                <apex:pageBlockTable value="{!contacts}" var="con"  width="100%" id="cntTable">
+                    <apex:column value="{!con.FirstName}"/>
+                    <apex:column value="{!con.LastName}"/>
+                </apex:pageBlockTable>
+            </apex:pageblockSection>
+        </apex:pageBlock>
+        <apex:pageMessage summary="No Contacts Found" severity="Info" strength="3" rendered="{!AND(contacts == null, selectedAccountId != null)}"/>
+    </apex:outputPanel>
+</apex:form>
+ 
+</apex:page>

@@ -1,0 +1,20 @@
+<apex:page standardController="Contact">
+     <apex:includeScript value="/lightning/lightning.out.js" />
+     <div id="lightning" />
+<script>
+        $Lightning.use("c:visdependenapp", function() {
+            // Write a function that creates the component on the page
+          $Lightning.createComponent("c:vis",
+          {},
+          "lightning",
+          function(cmp) {
+          });
+        });
+    </script>
+
+    <style>
+        body{
+            margin: 0;
+        }
+    </style>
+</apex:page>

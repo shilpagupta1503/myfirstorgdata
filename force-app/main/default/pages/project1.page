@@ -1,0 +1,39 @@
+<apex:page controller="selectlst5" >
+   <apex:form >
+       <apex:pageBlock >
+           <apex:pageBlockSection title="General Information" >
+              <apex:inputField value="{!con.firstname}" />
+              <apex:inputField value="{!con.lastname}" />
+              <apex:inputField value="{!con.Email}"  required="true"/>
+              <apex:inputField value="{!con.Phone}"  required="true"/>
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Address Information" >
+              <apex:inputField value="{!con.MailingCity}" />
+              <apex:inputField value="{!con.MailingCountry}" />
+              <apex:inputField value="{!con.MailingState}" />
+              <apex:inputField value="{!con.MailingPostalCode}"  required="true"/>
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Industry Information" >
+              <apex:selectList label="Business Vertical" size="1" value="{!selectedvalues}">
+               <apex:actionSupport event="onchange" reRender="a" />
+                  <apex:selectOptions value="{!Items}" >
+                </apex:selectOptions>
+               </apex:selectList>
+               <apex:inputField value="{!con.Date_Procured__c}"/>
+               <apex:selectList label="Area Of Division" size="1" id="a">
+                  <apex:selectOptions value="{!Items1}">
+                  </apex:selectOptions>
+               </apex:selectList>
+               <apex:selectList label="Division Of Vertical" size="1">
+                  <apex:selectOptions value="{!Items2}" />
+               </apex:selectList>
+                
+
+           </apex:pageBlockSection>
+           <apex:pageBlockSection title="Amount Information" >
+              <apex:inputField value="{!con.Amount_Invested__c}" label="Amount Invested" required="true"/>
+              <apex:inputField value="{!con.Amount_Earned__c}" label="Amount Earned" required="true"/>
+           </apex:pageBlockSection>
+        </apex:pageBlock>
+   </apex:form> 
+</apex:page>

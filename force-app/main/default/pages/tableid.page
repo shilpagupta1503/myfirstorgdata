@@ -1,0 +1,32 @@
+<apex:page standardController="Account" recordSetVar="records">
+ <apex:form >
+ <apex:pageBlock >
+ <apex:inlineEditSupport />
+ <apex:pageBlockTable value="{! records}" var="rec">
+ <apex:column >
+ <apex:outputField value="{! rec.Name}"/>
+ <apex:facet name="header">Account Name</apex:facet>
+  </apex:column>
+  <apex:column >
+ <apex:outputField value="{! rec.Type}"/>
+ <apex:facet name="header">Account Type</apex:facet>
+  </apex:column>
+  <apex:column >
+ <apex:outputField value="{! rec.Industry}"/>
+ <apex:facet name="header">Account Industry</apex:facet>
+  </apex:column>
+ </apex:pageBlockTable>
+<apex:pageBlockButtons >
+<apex:commandButton value="save" action="{! save}"/>
+<apex:commandButton value="edit" action="{! edit}"/>
+<apex:commandButton value="cancel" action="{! cancel}"/>
+</apex:pageBlockButtons>
+ 
+ </apex:pageBlock>
+ 
+ 
+ 
+ 
+ 
+ </apex:form>
+</apex:page>

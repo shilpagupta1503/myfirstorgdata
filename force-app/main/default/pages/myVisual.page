@@ -1,0 +1,47 @@
+<apex:page controller="myVisual2" sidebar="false" >
+  <apex:form >
+  <apex:image value="{!$Resource.Salesforce_Image}" width="1300" height="200"/>
+    <apex:pageBlock >
+         <apex:actionFunction name="queryResults" action="{!doQuery}" reRender="out"/>
+       Search:<apex:inputText value="{!query}" onkeyup="queryResults()"   />
+       <br/> 
+       <br/>
+       <br/>
+       
+       
+    <apex:pageBlock id="out" >
+      <apex:pageblockButtons location="top">
+         <apex:commandButton value="Process Selected" action="{!selectedAccount}"/>
+         <apex:commandButton value="Clear All" action="{!clear}" />
+      </apex:pageblockButtons>
+      <apex:pageBlockSection collapsible="true" title="All Accounts" columns="1" id="block" >
+      <apex:pageBlockTable value="{!wrapClasslist}" var="w">
+          <apex:column headerValue="select" >
+            <apex:inputCheckbox value="{!w.check}"/>
+          </apex:column>
+          <apex:column headerValue="Account Name">
+            <apex:commandLink value="{!w.acc.Name}" reRender="acid">
+               <apex:param value="{!w.acc.id}" name="sip"/>
+            </apex:commandLink>
+          </apex:column> 
+          <apex:column value="{!w.acc.BillingCity}"/> 
+          <apex:column value="{!w.acc.BillingState}"/>
+          <apex:column value="{!w.acc.Phone}"/>
+         </apex:pageBlockTable>
+      </apex:pageBlockSection> 
+        <apex:commandButton value="Previous" action="{!previous}"/>
+        <apex:commandButton value="Next" action="{!next}" reRender="block" />
+      <apex:pageBlock id="acid" >
+        <apex:detail subject="{!$CurrentPage.Parameters.sip}" relatedList="false"/>
+      </apex:pageBlock>
+      <apex:pageblock >
+        <apex:pageBlockTable value="{!acclist1}" var="r">
+          <apex:column value="{!r.Name}"/>
+          <apex:column value="{!r.Phone}"/>
+          <apex:column value="{!r.BillingCity}"/>
+        </apex:pageBlockTable>
+      </apex:pageblock>
+    </apex:pageBlock>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

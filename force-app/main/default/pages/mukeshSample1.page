@@ -1,0 +1,19 @@
+<apex:page controller="pagalmukesh">
+<apex:form >
+<apex:pageBlock >
+
+<apex:pageBlockSection >
+<apex:inputText label="Search" value="{!Record}"/>
+<apex:commandButton value="go" action="{!go}"/>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection >
+<apex:pageBlockTable value="{!abc}" var="b">
+<apex:column value="{!b.name}"/>
+<apex:column value="{!b.phone }"/>
+<apex:column value="{!b.Type}"/>
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

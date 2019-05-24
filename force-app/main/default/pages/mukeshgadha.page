@@ -1,0 +1,25 @@
+<apex:page standardController="Account" sidebar="false" recordSetVar="records"  >
+<apex:form >
+<apex:pageBlock >
+
+<apex:pageBlockSection >
+<apex:pageBlockTable var="r" value="{!records}" columns="2">
+<apex:column >
+<apex:commandLink value="{!r.Name}" reRender="p">
+<apex:param value="{!r.Id}" name="relatedId" />
+</apex:commandLink>
+</apex:column>
+<apex:column value="{!r.Type}" />
+<apex:column value="{!r.Industry}" />
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection id="p">
+<apex:detail subject="{!$CurrentPage.Parameters.relatedId}" relatedList="false" />
+
+</apex:pageBlockSection>
+
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

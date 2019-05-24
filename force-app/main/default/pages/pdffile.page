@@ -1,0 +1,13 @@
+<apex:page controller="ControllerClassPdf" renderAs="pdf" >
+   <apex:pageblock >
+ 
+ <apex:pageBlockTable value="{!contactlst}" var="c">
+<apex:column value="{!c.firstname}"/>
+<apex:column value="{!c.lastname}"/>
+<apex:column value="{!c.email}"/>
+ 
+ </apex:pageBlockTable>
+   
+    </apex:pageblock>
+
+</apex:page>

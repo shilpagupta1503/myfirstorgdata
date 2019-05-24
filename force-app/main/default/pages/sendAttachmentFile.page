@@ -1,0 +1,8 @@
+<apex:page controller="PdfControllerClass">
+  <apex:pageBlock >
+    <apex:form >
+      
+        <apex:commandButton value="sendEmail" action="{!sendEmail}"/>
+    </apex:form>
+  </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	 <aura:attribute name="sectionFields" type="Object[]"  /> 
+     <lightning:button variant="brand" label="Base" title="Base action" onclick="{! c.ClickField1 }"/>
+    <div class="slds-page-header__col-details">
+        <h3 class="slds-section-title--divider" style="color:rgba(60, 74, 164, 1.0);font-weight:bold;">Create new Member</h3>
+        <lightning:layout multipleRows="true">
+            <aura:iteration items="{! v.sectionFields }" var="field">
+                <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small">
+                    <div class="custom-box" style="width:50%">
+                        <lightning:input value="" label="{!field.fieldAPIName}" class="slds-p-top_small slds-m-top_medium" />
+                    </div>
+                </lightning:layoutItem>
+            </aura:iteration>
+        </lightning:layout>
+    </div>
+</aura:component>

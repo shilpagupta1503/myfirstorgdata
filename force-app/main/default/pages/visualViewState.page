@@ -1,0 +1,27 @@
+<apex:page controller="customDesign1" >
+ <apex:form >
+   <apex:pageBlock >
+     <apex:pageBlockSection >
+       <apex:inputField value="{!con.AccountId}"/>
+       <apex:commandButton action="{!GetDetails}" value="Go"/>
+     </apex:pageBlockSection>
+   </apex:pageBlock>
+   <apex:pageBlock >
+     <apex:pageBlockSection title="Accont Information" columns="3">
+       <apex:outputField value="{!acc.Name}"/>
+       <apex:outputField value="{!acc.Industry}"/>
+     </apex:pageBlockSection>
+   </apex:pageBlock>
+   <apex:pageBlock >
+     <apex:pageBlockSection title="Contact Details" >
+       <apex:pageBlockTable value="{!records}" var="abc">
+       <apex:column value="{!abc.LastName}"/>
+       <apex:column value="{!abc.Email}"/>
+       <apex:column value="{!abc.Phone}"/>
+       </apex:pageBlockTable>
+       </apex:pageBlockSection>
+     <apex:commandButton value="Create New" action="{!NewContact}"/>
+     
+   </apex:pageBlock>
+ </apex:form>
+</apex:page>

@@ -1,0 +1,20 @@
+<apex:page controller="viewdata1"   >
+<apex:pageBlock >
+<apex:pageBlockSection title="ACCOUNT" columns="2" >
+<apex:pageBlockTable value="{!records}" var="rec">
+<apex:column value="{!rec.AccountNumber}"/>
+<apex:column value="{!rec.AnnualRevenue}"/>
+<apex:column value="{!rec.Phone}"/>
+</apex:pageBlockTable>
+
+<apex:pageBlockSection title="CONTACT">
+<apex:pageBlockTable value="{!record}" var="res">
+<apex:column value="{!res.Name}"/>
+<apex:column value="{!res.Department}"/>
+<apex:column value="{!res.HomePhone}"/>
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:page>

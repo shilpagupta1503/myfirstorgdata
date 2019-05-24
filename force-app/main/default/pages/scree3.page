@@ -1,0 +1,11 @@
+<apex:page controller="wizard" >
+  <apex:form >
+    <apex:pageBlock title="Review">
+      <apex:pageBlockSection >
+      <apex:outputField value="{!a.Name}"/>
+        <apex:outputField value="{!a.Phone}"/>
+     </apex:pageBlockSection>
+     
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

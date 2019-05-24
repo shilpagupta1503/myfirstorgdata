@@ -1,0 +1,13 @@
+<apex:page controller="p"  >
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockSection >
+<apex:inputField value="{!ca.ContactId}" />
+<apex:commandButton value="Go" action="{!go}"/>
+<apex:commandButton value="Add New Contact" action="{!newcontact}"/>
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

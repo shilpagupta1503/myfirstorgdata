@@ -1,0 +1,14 @@
+<apex:page controller="task1">
+  <apex:form >
+    <apex:pageBlock >
+    <apex:pageMessages ></apex:pageMessages>
+      <apex:pageBlockSection columns="1" >
+      <apex:inputField value="{!acc.Name}"/>
+      <apex:inputField value="{!acc.Industry}"/>
+      <apex:inputField value="{!acc.Rating}"/>
+      <apex:commandButton value="NextPage" action="{!NextPage1}" />
+    
+      </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

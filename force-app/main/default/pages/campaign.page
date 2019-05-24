@@ -1,0 +1,12 @@
+<apex:page standardController="Campaign" recordSetVar="records">
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockTable value="{!records}" var="b">
+<apex:column value="{!b.Name}"/>
+<apex:column headerValue="EndDate" >
+<apex:inputField value="{!b.EndDate}"/>
+</apex:column>
+</apex:pageBlockTable>
+</apex:pageBlock>  
+</apex:form>
+</apex:page>

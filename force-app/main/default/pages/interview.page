@@ -1,0 +1,12 @@
+<apex:page controller="interview" >
+  <apex:form >
+    <apex:pageBlock >
+     <apex:pageBlockSection >
+       <apex:pageBlockTable value="{!wlist}" var="r">
+         <apex:column value="{!r.acc.Name}"/>
+         <apex:column value="{!r.con}"/>
+       </apex:pageBlockTable>
+     </apex:pageBlockSection>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

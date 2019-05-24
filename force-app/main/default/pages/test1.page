@@ -1,0 +1,9 @@
+<apex:page sidebar="false" showHeader="true" standardController="Candidate__c">
+ <apex:form >
+ <apex:pageBlock Title="New Candidate">
+ 
+ <apex:pageBlockSection title="Personal Details"></apex:pageBlockSection>
+ 
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

@@ -1,0 +1,101 @@
+<aura:component implements="force:appHostable,lightning:isUrlAddressable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="ClassOnReport" >
+    <aura:attribute name="reportList" type="report[]"/> 
+     <aura:attribute name="listOfArray" type="Account"/> 
+    <aura:attribute name="reportAccountData" type="Account[]"/>
+    <aura:attribute name="datainput" type="String"/>
+    <aura:attribute name="dataindex" type="String"/>
+    <aura:attribute name="sendData" type="object"/>
+    <!--<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+    <div class="style">
+    <lightning:button class="" label="Search" name="Search" onclick="{!c.DataReport}"/>
+    <lightning:button class="slds-button slds-button_neutral" label="Selected Accounts" name="Selected Accounts" onclick="{!c.SelAccounts}" variant="brand" />
+     <!--<lightning:button class="slds-button slds-button_neutral" label="Download Document" name="Download Document" onclick="{!c.downloadDocument}" variant="brand" />-->
+    </div>
+    
+    
+            
+     <div onkeyup="{! c.handleKeyUp }">
+        <lightning:input
+            aura:id="enter-search"
+            label="Search when user hits the 'enter' key"
+            
+                         value="{!v.datainput}"
+        />
+        
+    </div>
+    
+    
+      <div class="slds-p-left_small">
+        <aura:iteration items="{!v.reportList}" var="item" indexVar="index">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-4">
+                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                        <li role="presentation" class="slds-listbox__item">
+                            <div class="slds-media slds-listbox__option 
+                                                     slds-listbox__option_entity 
+                                                     slds-listbox__option_has-meta" 
+                                 role="option" id="{!index}" onclick="{!c.showReport}">
+                                <span class="slds-media__figure slds-listbox__option-icon">
+                                    
+                                </span>
+                                <span class="slds-media__body">
+                                    <span class="slds-listbox__option-text 
+                                                 slds-listbox__option-text_entity">
+                                        {!item.Name}
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </aura:iteration>
+    </div>
+    
+
+    
+    
+    <div class="hidename" aura:id="hide">
+        <aura:iteration items="{!v.reportList}" var="ct"  indexVar="index">
+           <div class="slds-grid slds-wrap">
+  <div class="slds-col slds-size_1-of-4">
+  <a  onclick="{!c.showReport}" data-index="{!ct.Id}"><lightning:pill label="{!ct.Name}" /> </a>
+      
+      
+  </div>
+  
+</div>
+        
+        </aura:iteration>
+    </div>
+    <div class="slds-var-p-around_medium">
+        <table class="slds-table slds-table bordered slds-table striped  slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="removeheader" aura:id="hideheader">
+                    <th></th>
+                    <th>Account Name</th>
+                    <th>Account ID</th>
+                    <th>Rating</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.reportAccountData}" var="report" >
+                    <tr> <td   >
+                                
+                                <ui:inputCheckbox aura:id="checkbox1"   text="{!report.Id}" value=""  />
+                                
+                                
+                            </td> 
+                        <td><lightning:formattedText   linkify="true" value="{!report.Name}" /></td>
+                        <td><lightning:formattedText   linkify="true" value="{!report.Id}" /></td>
+                        <td><lightning:formattedText   linkify="true" value="{!report.Rating}" /></td>     
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table> 
+    </div>
+
+ 
+</aura:component>

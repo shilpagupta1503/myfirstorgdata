@@ -1,0 +1,47 @@
+<apex:page controller="StandardSetController">
+<apex:form >
+    <apex:pageBlock >
+      <apex:pageblockButtons location="top">
+         <apex:commandButton value="Process Selected" action="{!selectedAccount}"/>
+         <apex:commandButton value="Clear All" action="{!clear}" />
+      </apex:pageblockButtons>
+    <apex:pageBlockTable value="{!wraplist}" var="r">
+    <apex:column >
+      <apex:inputCheckbox value="{!r.check}"/>
+     </apex:column> 
+    <apex:column value="{!r.acc.Name}"/>
+    <apex:column value="{!r.acc.Phone}"/>
+    <apex:column value="{!r.acc.BillingState}"/>
+    </apex:pageBlockTable>
+    </apex:pageBlock>
+    <apex:pageBlock >
+    <apex:pageBlockTable value="{!acclist}" var="i" styleClass="myTable" rowClasses="row">
+    <apex:column >
+                <span class="counter"></span>
+            </apex:column>
+      <apex:column value="{!i.Name}"/>
+    <apex:column value="{!i.Phone}"/>
+    <apex:column value="{!i.BillingState}"/>
+    </apex:pageBlockTable>
+    <apex:commandButton value="<<" action="{!first}" disabled="{!NOT(backward)}"/>
+    <apex:commandButton value="<" action="{!previous}" disabled="{!NOT(backward)}" />
+    <apex:commandButton value=">" action="{!next}" disabled="{!NOT(forward)}"/>
+    <apex:commandButton value=">>" action="{!last}" disabled="{!NOT(forward)}"/>
+      
+    </apex:pageBlock>
+  </apex:form>
+
+
+<style>
+.myTable {
+        counter-reset: rowCounter;
+    }
+    .myTable .row {
+        counter-increment: rowCounter;
+    }
+    .myTable .row .counter::before {
+        content: counter(rowCounter);
+    }
+
+</style>
+</apex:page>
